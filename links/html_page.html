@@ -2,34 +2,82 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <title>HTML</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="Anthony LE GUYADER">
+      <meta name="generator" content="Jekyll v4.1.1">
+      <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 
-    <title>Accueil</title>
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+      <!-- Bootstrap core CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-  </head>
+      <!-- Favicons -->
+      <!--<link rel="shortcut icon" type="image/png" href="/static/logos/favicon.png"/>-->
 
-  <body>
-    <header>
-      <h1>HTML</h1>
-    </header>
 
-    <nav>
-      <ul>
-        <li id="home_link"><a href="../index.html">Accueil</a></li>
-      </ul>
+          <style>
+            .bd-placeholder-img {
+              font-size: 1.125rem;
+              text-anchor: middle;
+              -webkit-user-select: none;
+              -moz-user-select: none;
+              -ms-user-select: none;
+              user-select: none;
+            }
 
-     </nav>
+            @media (min-width: 768px) {
+              .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+              }
+            }
+          </style>
 
-     <main>
-      <article>
-        <img src="../img/html_logo.png" width=auto height=315 title="HTML" alt="Logo HTML"/>
+
+      <!-- Custom styles for this template -->
+      <link href="../css/navbar.css" rel="stylesheet">
+      <link href="../css/product.css" rel="stylesheet">
+      <link rel="stylesheet" href="../css/style.css">
+
+    </head>
+
+    <body id="test">
+          <header class="header" style="transform: translateX(0px);">
+            <div class="header__logo">
+              <img src="../img/HeaderLogo.png" alt="logo">
+            </div>
+            <div class="header__navwrap">
+              <div class="header__navbar">
+                    <a class="header__navitem" href="../index.html">Accueil</a>
+                    <a class="header__navitem nuxt-link-exact-active nuxt-link-active header__navitem--focus" href="#">HTML</a>
+                    <a class="header__navitem" href="js_page.html">JavaScript</a>
+                    <a class="header__navitem" href="php_page.html">PHP</a>
+                    <a class="header__navitem" href="vue_page.html">Vue</a>
+                    <a class="header__navitem" href="whoami_page.html">Qui suis-je ?</a>
+              </div>
+            </div>
+            </header>
+      </div>
+      
+          <video poster="../video/HomeVideoImage.JPG" id="bgvid" playsinline autoplay muted loop>
+            <!--- Video needs to be muted, since Chrome 66+ will not autoplay video with sound.
+            WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button -->
+            <source src="../video/HomeVideo.mp4" type="video/mp4">
+          </video>
+          <center style="margin: auto;">
+            <div class="center-content">
+              <img src="../img/html_logo.png" width=auto height=315 title="HTML" alt="Logo HTML"/>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/4z6LwgRhdZ0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </article>
-    </main>
+            </div>
+          </center>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
-    <footer>
-      <p>©Copyright ... </p>
-    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
   </body>
 </html>
