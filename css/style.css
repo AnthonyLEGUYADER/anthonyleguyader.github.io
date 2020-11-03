@@ -79,7 +79,7 @@ footer {
   width: 100%;
   text-align: center;
   background-color: rgba(17, 17, 17, 0.75);
-  box-shadow: 0 -0.5em 7px 0 rgba(17, 17, 17, 0.75);
+  box-shadow: 0 -0.5em 7px 1em rgba(17, 17, 17, 0.75);
   z-index: 1000;
 }
 
