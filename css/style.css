@@ -123,6 +123,7 @@ main {
 
 article {
   flex: 4;
+  text-align: center;
 }
 
 aside {
