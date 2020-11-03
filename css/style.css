@@ -185,6 +185,23 @@ link {
   display: none;
 }
 
+.cop1_table {
+  color: white;
+  font-size: 10vh;
+  width: 30%;
+  margin: 1em auto 0 auto;
+}
+
+.cop1_table tbody tr td img {
+  transition: 0.5s;
+  border-radius: 50%;
+}
+
+
+.cop1_table tbody tr td img:hover {
+  transform: scale(1.2);
+}
+
 .nuxt-progress {
 position: fixed;
 top: 0px;

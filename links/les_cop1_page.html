@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>JavaScript</title>
+    <title>Vue</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="description" content="">
@@ -51,16 +51,27 @@
               <div class="header__navbar">
                     <a class="header__navitem" href="../index.html">Accueil</a>
                     <a class="header__navitem" href="html_page.html">HTML</a>
-                    <a class="header__navitem nuxt-link-exact-active nuxt-link-active header__navitem--focus" href="#">JavaScript</a>
+                    <a class="header__navitem" href="js_page.html">JavaScript</a>
                     <a class="header__navitem" href="php_page.html">PHP</a>
                     <a class="header__navitem" href="vue_page.html">Vue</a>
                     <a class="header__navitem" href="whoami_page.html">Qui suis-je ?</a>
-                    <a class="header__navitem" href="les_cop1_page.html">Les cop1</a>
+                    <a class="header__navitem nuxt-link-exact-active nuxt-link-active header__navitem--focus" href="#">Les cop1</a>
               </div>
             </div>
             </header>
       </div>
-      
+          <main style="width: 100%; text-align: center; display: flex; flex-direction: column;">
+            <h1>Les cop1</h1>
+            <table class="cop1_table">
+              <thead></thead>
+              <tbody>
+                <tr>
+                  <td><a href="https://juliebousseau.github.io/"><img src="../img/julie.png" width=200px height=200px alt="julie" title="julie"/></a></td>
+                  <td><a href="https://fguigner.github.io/"><img src="../img/floran.png" width=200px height=200px alt="floran" title="floran"/></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </main>
           <video poster="../video/HomeVideoImage.JPG" id="bgvid" playsinline autoplay muted loop>
             <!--- Video needs to be muted, since Chrome 66+ will not autoplay video with sound.
             WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button -->
