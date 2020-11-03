@@ -68,13 +68,15 @@ nav {
 
 nav ul {
   padding: 0;
+  margin: 0;
   list-style-type: none;
   flex: 2;
   display: flex;
 }
 
 nav li {
-  display: inline;
+  display: flex;
+  justify-content: center;
   text-align: center;
   flex: 1;
 }
@@ -85,6 +87,7 @@ nav a {
   text-transform: uppercase;
   text-decoration: none;
   color: white;
+  align-self: center;
 }
 
 nav form {
