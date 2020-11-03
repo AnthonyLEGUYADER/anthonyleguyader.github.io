@@ -68,26 +68,29 @@ a {
 display: inline-block;
 color: #fff;
 text-decoration: none;
-background:rgba(0,0,0,0.5);
 padding: .5rem;
 transition: .6s background; 
 }
 
 footer {
   color: #eeeeee;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   text-align: center;
+  background-color: rgba(17, 17, 17, 0.75);
+  box-shadow: 0 -0.5em 7px 0 rgba(0, 0, 0, 0.35);
+  z-index: 1000;
 }
 
 footer a {
-  color: #0088FF
+  color: #0088FF;
 }
 
-a:hover{
-background:rgba(0,0,0,0.9);
+footer a:hover {
+  color: #0066FF;
 }
+
 @media screen and (max-width: 500px) { 
 div{width:70%;} 
 }
