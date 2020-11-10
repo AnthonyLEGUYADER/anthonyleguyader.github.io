@@ -60,6 +60,26 @@
             </div>
             </header>
       </div>
+
+      <main>
+        <h1 class="center compteur">10</h1>
+          <script type="text/javascript">
+            var timer;
+
+            let compteurElement = document.getElementsByClassName("compteur")[0];
+            timer = setInterval(() => {
+              let compteurVal = compteurElement.innerHTML;
+              if (compteurVal > 0) {
+                compteurVal--;
+                compteurElement.innerHTML = compteurVal;
+              }
+              else {
+                clearInterval(timer);
+                return;
+              }
+            }, 1000);
+          </script>
+      </main>
       
           <video poster="../video/HomeVideoImage.JPG" id="bgvid" playsinline autoplay muted loop>
             <!--- Video needs to be muted, since Chrome 66+ will not autoplay video with sound.
