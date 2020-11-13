@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>JS/TP2.1</title>
+    <title>JS/TP2.2</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="description" content="">
@@ -44,8 +44,8 @@
 
     <body id="test">
           <header class="header" style="transform: translateX(0px);">
-            <div class="header__logo">
-              <img src="../../img/HeaderLogo.png" alt="logo">
+            <div class="header__logo" style="height: 66px">
+              <img src="../../img/HeaderLogo.png" alt="logo" height=100%>
             </div>
             <div class="header__navwrap">
               <div class="header__navbar">
@@ -60,25 +60,11 @@
             </div>
             </header>
       </div>
-      <h1>TP 2.1</h1>
-      <main>
-        <h1 class="center compteur">10</h1>
-          <script type="text/javascript">
-            var timer;
-
-            let compteurElement = document.getElementsByClassName("compteur")[0];
-            let compteurVal = compteurElement.innerHTML;
-            timer = setInterval(() => {
-              if (compteurVal > 0) {
-                compteurVal--;
-                compteurElement.innerHTML = compteurVal;
-              }
-              else {
-                clearInterval(timer);
-              }
-            }, 1000);
-          </script>
-      </main>
+      <div>
+        <h1>TP 2.4</h1>
+        <h1 class="compteur">Compteur : 0</h1>
+        <canvas id="canvas" style="width: 1280px;"></canvas>     
+      </div>
           <video poster="../../video/HomeVideoImage.JPG" id="bgvid" playsinline autoplay muted loop>
             <!--- Video needs to be muted, since Chrome 66+ will not autoplay video with sound.
             WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button -->
@@ -96,6 +82,87 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
   </body>
+  <script type="text/javascript">
+    function draw(x, y, width, height) {
+      let canvas = document.getElementById('canvas');
+      if (canvas.getContext) {
+        let ctx = canvas.getContext('2d');
+        ctx.fillStyle = "red";
+        ctx.fillRect(x, y, width, height);
+      }
+    }
+
+    function drawFirstSquare(x) {
+      let timer = setInterval(() => {
+        let canvas = document.getElementById('canvas');
+        let ctx = canvas.getContext('2d');
+          ctx.clearRect(0,0, canvas.width, 50);
+          ctx.fillStyle = "red";
+          if (x < canvas.width + 25) {
+            draw(x = x+10, 25, 25, 25);
+          }
+          else {
+            clearInterval(timer);
+          }
+      }, 100);
+    }
+
+    function drawSecondSquare(x) {
+      let timer = setInterval(() => {
+        let canvas = document.getElementById('canvas');
+        let ctx = canvas.getContext('2d');
+          ctx.clearRect(0,51, canvas.width, 50);
+          ctx.fillStyle = "red";
+          if (x < canvas.width + 25) {
+            draw(x = x+10, 75, 25, 25);
+          }
+          else {
+            clearInterval(timer);
+          }
+      }, 100);
+    }
+
+    function drawThirdSquare(x) {
+      let timer = setInterval(() => {
+        let canvas = document.getElementById('canvas');
+        let ctx = canvas.getContext('2d');
+          ctx.clearRect(0,101, canvas.width, 50);
+          ctx.fillStyle = "red";
+          if (x < canvas.width + 25) {
+            draw(x = x+10, 125, 25, 25);
+          }
+          else {
+            clearInterval(timer);
+          }
+      }, 100);
+    }
+
+    function start() {
+      var sec = 0;
+      let compteurElement = document.getElementsByClassName("compteur")[0];
+      let run = setInterval(() =>{
+          if (sec == 3) {
+            drawFirstSquare(0);
+          }
+          else if (sec == 4) {
+            drawSecondSquare(0);
+          }
+          else if (sec == 5) {
+            drawThirdSquare(0);
+          }
+          else if (sec > 5) {
+            clearInterval(run);
+          }
+          sec += 1;
+          compteurElement.innerHTML = "Compteur : " + sec;
+          console.log(sec);
+      }, 1000);
+    }
+
+
+    window.addEventListener("load", () => {
+      start();
+    });
+  </script>
 </html>
