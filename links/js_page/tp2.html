@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>JavaScript</title>
+    <title>JS/TP2</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="description" content="">
@@ -36,37 +36,54 @@
 
 
       <!-- Custom styles for this template -->
-      <link href="../css/navbar.css" rel="stylesheet">
-      <link href="../css/product.css" rel="stylesheet">
-      <link rel="stylesheet" href="../css/style.css">
+      <link href="../../css/navbar.css" rel="stylesheet">
+      <link href="../../css/product.css" rel="stylesheet">
+      <link rel="stylesheet" href="../../css/style.css">
 
     </head>
 
     <body id="test">
           <header class="header" style="transform: translateX(0px);">
             <div class="header__logo">
-              <img src="../img/HeaderLogo.png" alt="logo">
+              <img src="../../img/HeaderLogo.png" alt="logo">
             </div>
             <div class="header__navwrap">
               <div class="header__navbar">
-                    <a class="header__navitem" href="../index.html">Accueil</a>
-                    <a class="header__navitem" href="html_page.html">HTML</a>
-                    <a class="header__navitem nuxt-link-exact-active nuxt-link-active header__navitem--focus" href="#">JavaScript</a>
-                    <a class="header__navitem" href="php_page.html">PHP</a>
-                    <a class="header__navitem" href="vue_page.html">Vue</a>
-                    <a class="header__navitem" href="whoami_page.html">Qui suis-je ?</a>
-                    <a class="header__navitem" href="les_cop1_page.html">Les cop1</a>
+                    <a class="header__navitem" href="../../index.html">Accueil</a>
+                    <a class="header__navitem" href="../html_page.html">HTML</a>
+                    <a class="header__navitem nuxt-link-exact-active nuxt-link-active header__navitem--focus" href="../js_page.html">JavaScript</a>
+                    <a class="header__navitem" href="../php_page.html">PHP</a>
+                    <a class="header__navitem" href="../vue_page.html">Vue</a>
+                    <a class="header__navitem" href="../whoami_page.html">Qui suis-je ?</a>
+                    <a class="header__navitem" href="../les_cop1_page.html">Les cop1</a>
               </div>
             </div>
             </header>
       </div>
-      <main class="center">
-        <a href="js_page/tp2.html">TP2</a>
+      <h1>TP 2</h1>
+      <main>
+        <h1 class="center compteur">10</h1>
+          <script type="text/javascript">
+            var timer;
+
+            let compteurElement = document.getElementsByClassName("compteur")[0];
+            timer = setInterval(() => {
+              let compteurVal = compteurElement.innerHTML;
+              if (compteurVal > 0) {
+                compteurVal--;
+                compteurElement.innerHTML = compteurVal;
+              }
+              else {
+                clearInterval(timer);
+                return;
+              }
+            }, 1000);
+          </script>
       </main>
-          <video poster="../video/HomeVideoImage.JPG" id="bgvid" playsinline autoplay muted loop>
+          <video poster="../../video/HomeVideoImage.JPG" id="bgvid" playsinline autoplay muted loop>
             <!--- Video needs to be muted, since Chrome 66+ will not autoplay video with sound.
             WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button -->
-            <source src="../video/HomeVideo.mp4" type="video/mp4">
+            <source src="../../video/HomeVideo.mp4" type="video/mp4">
           </video>
     </div>
     <footer class="mastfoot mt-auto">
