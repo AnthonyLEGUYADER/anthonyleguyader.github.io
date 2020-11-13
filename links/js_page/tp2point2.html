@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>JavaScript</title>
+    <title>JS/TP2.2</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="description" content="">
@@ -36,39 +36,38 @@
 
 
       <!-- Custom styles for this template -->
-      <link href="../css/navbar.css" rel="stylesheet">
-      <link href="../css/product.css" rel="stylesheet">
-      <link rel="stylesheet" href="../css/style.css">
+      <link href="../../css/navbar.css" rel="stylesheet">
+      <link href="../../css/product.css" rel="stylesheet">
+      <link rel="stylesheet" href="../../css/style.css">
 
     </head>
 
     <body id="test">
           <header class="header" style="transform: translateX(0px);">
             <div class="header__logo">
-              <img src="../img/HeaderLogo.png" alt="logo">
+              <img src="../../img/HeaderLogo.png" alt="logo">
             </div>
             <div class="header__navwrap">
               <div class="header__navbar">
-                    <a class="header__navitem" href="../index.html">Accueil</a>
-                    <a class="header__navitem" href="html_page.html">HTML</a>
-                    <a class="header__navitem nuxt-link-exact-active nuxt-link-active header__navitem--focus" href="#">JavaScript</a>
-                    <a class="header__navitem" href="php_page.html">PHP</a>
-                    <a class="header__navitem" href="vue_page.html">Vue</a>
-                    <a class="header__navitem" href="whoami_page.html">Qui suis-je ?</a>
-                    <a class="header__navitem" href="les_cop1_page.html">Les cop1</a>
+                    <a class="header__navitem" href="../../index.html">Accueil</a>
+                    <a class="header__navitem" href="../html_page.html">HTML</a>
+                    <a class="header__navitem nuxt-link-exact-active nuxt-link-active header__navitem--focus" href="../js_page.html">JavaScript</a>
+                    <a class="header__navitem" href="../php_page.html">PHP</a>
+                    <a class="header__navitem" href="../vue_page.html">Vue</a>
+                    <a class="header__navitem" href="../whoami_page.html">Qui suis-je ?</a>
+                    <a class="header__navitem" href="../les_cop1_page.html">Les cop1</a>
               </div>
             </div>
             </header>
       </div>
-      <main class="center">
-        <a href="js_page/tp2point1.html">TP2.1</a>
-        <a href="js_page/tp2point2.html">TP2.2</a>
-        <a href="js_page/tp2point3.html">TP2.3</a>
+      <h1>TP 2.2</h1>
+      <main>
+        <canvas id="canvas" style="width: 1280px;"></canvas>     
       </main>
-          <video poster="../video/HomeVideoImage.JPG" id="bgvid" playsinline autoplay muted loop>
+          <video poster="../../video/HomeVideoImage.JPG" id="bgvid" playsinline autoplay muted loop>
             <!--- Video needs to be muted, since Chrome 66+ will not autoplay video with sound.
             WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button -->
-            <source src="../video/HomeVideo.mp4" type="video/mp4">
+            <source src="../../video/HomeVideo.mp4" type="video/mp4">
           </video>
     </div>
     <footer class="mastfoot mt-auto">
@@ -84,4 +83,43 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
   </body>
+  <script type="text/javascript">
+
+      function draw() {
+        let canvas = document.getElementById('canvas');
+          if (canvas.getContext) {
+            let ctx = canvas.getContext('2d');
+            ctx.fillStyle = "red";
+            ctx.fillRect(0, 25, 50, 50);
+          }
+        }
+
+    function start() {
+      var timer;
+      var x = 0;
+      draw();
+      timer = setInterval(() => {
+        let canvas = document.getElementById('canvas');
+        if (canvas.getContext) {
+          console.log("width : " + canvas.width);
+          let ctx = canvas.getContext('2d');
+          ctx.clearRect(0,0, canvas.width, canvas.height);
+          ctx.fillStyle = "red";
+          if (x < canvas.width + 50) {
+            ctx.fillRect(x+10, 25, 50, 50);
+            x+=10;
+            console.log(x);
+          }
+          else {
+            clearInterval(timer);
+            console.log("clear");
+          }
+        }
+      }, 100);
+    }
+
+    window.addEventListener("load", () => {
+      start();
+    });
+  </script>
 </html>

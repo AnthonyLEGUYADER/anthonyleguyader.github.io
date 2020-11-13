@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>JS/TP2</title>
+    <title>JS/TP2.2</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="description" content="">
@@ -60,25 +60,9 @@
             </div>
             </header>
       </div>
-      <h1>TP 2</h1>
+      <h1>TP 2.2</h1>
       <main>
-        <h1 class="center compteur">10</h1>
-          <script type="text/javascript">
-            var timer;
-
-            let compteurElement = document.getElementsByClassName("compteur")[0];
-            timer = setInterval(() => {
-              let compteurVal = compteurElement.innerHTML;
-              if (compteurVal > 0) {
-                compteurVal--;
-                compteurElement.innerHTML = compteurVal;
-              }
-              else {
-                clearInterval(timer);
-                return;
-              }
-            }, 1000);
-          </script>
+        <canvas id="canvas" style="width: 1280px;"></canvas>     
       </main>
           <video poster="../../video/HomeVideoImage.JPG" id="bgvid" playsinline autoplay muted loop>
             <!--- Video needs to be muted, since Chrome 66+ will not autoplay video with sound.
@@ -99,4 +83,46 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
   </body>
+  <script type="text/javascript">
+    function draw() {
+      let canvas = document.getElementById('canvas');
+      if (canvas.getContext) {
+        let ctx = canvas.getContext('2d');
+        ctx.fillStyle = "red";
+        ctx.fillRect(0, 25, 50, 50);
+      }
+    }
+
+    function start() {
+      var timer;
+      var x = 0;
+      draw();
+      var delay2sec = setInterval(() => {
+        timer = setInterval(() => {
+        let canvas = document.getElementById('canvas');
+          if (canvas.getContext) {
+            console.log("width : " + canvas.width);
+            let ctx = canvas.getContext('2d');
+            ctx.clearRect(0,0, canvas.width, canvas.height);
+            ctx.fillStyle = "red";
+            if (x < canvas.width + 50) {
+              ctx.fillRect(x+10, 25, 50, 50);
+              x+=10;
+              console.log(x);
+            }
+            else {
+              clearInterval(timer);
+              console.log("clear");
+            }
+          }
+        }, 100);
+        clearInterval(delay2sec);
+      }, 2000);
+    }
+
+
+    window.addEventListener("load", () => {
+      start();
+    });
+  </script>
 </html>
