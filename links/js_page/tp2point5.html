@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>JS/TP2.4</title>
+    <title>JS/TP2.5</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="description" content="">
@@ -61,7 +61,7 @@
             </header>
       </div>
       <div>
-        <h1>TP 2.4</h1>
+        <h1>TP 2.5</h1>
         <h1 class="compteur">Compteur : 0</h1>
         <canvas id="canvas" style="width: 1280px;"></canvas>     
       </div>
@@ -85,26 +85,14 @@
   </body>
   <script type="text/javascript">
 
-    var squares = [
-      {
-        x: 0,
-        y: 25,
-        width: 25,
-        height : 25
-      },
-      {
-        x: 0,
-        y: 25,
-        width: 25,
-        height : 25
-      },
-      {
-        x: 0,
-        y: 25,
-        width: 25,
-        height : 25
+    class Carre {
+      constructor(x, y, width, height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
       }
-    ]
+    }
 
     function draw(x, y, width, height) {
       let canvas = document.getElementById('canvas');
@@ -116,35 +104,34 @@
     }
 
     function drawSquare(square) {
-      let timer = setInterval(() => {
         let canvas = document.getElementById('canvas');
         let ctx = canvas.getContext('2d');
-          ctx.clearRect(square.x, square.y, square.width, 2*square.height);
-          ctx.fillStyle = "red";
-          if (square.x < canvas.width + 25) {
-            draw(square.x = square.x+10, square.height, square.width, square.height);
-          }
-          else {
-            clearInterval(timer);
-          }
-      }, 100);
+        ctx.clearRect(square.x, square.y, square.width, 2*square.height);
+        ctx.fillStyle = "red";
+        draw(square.x = square.x+10, square.height, square.width, square.height);
     }
 
     function start() {
       var sec = 0;
       let compteurElement = document.getElementsByClassName("compteur")[0];
-      let run = setInterval(() =>{
-          if (sec == 3) {
-            drawSquare(squares[0])
-          }
-          else if (sec == 4) {
-            drawSquare(squares[1])
-          }
-          else if (sec == 5) {
-            drawSquare(squares[2])
-          }
-          else if (sec > 5) {
+      var squares = new Array();
+      let timer = setInterval(() => {
+          squares.forEach(e => {
+            drawSquare(e);
+            if (e.x >= canvas.width + e.width) {
+              squares.pop(e);
+            }
+          });
+        }, 100);
+      let run = setInterval(() => {
+          if (sec == 13) {
             clearInterval(run);
+            clearInterval(timer);
+          }
+          if (sec >= 3) {
+            let newSquare = new Carre(0, 25, 25, 25);
+            squares.push(newSquare);
+            console.log("Nombre de carrés : " + squares.length);
           }
           sec += 1;
           compteurElement.innerHTML = "Compteur : " + sec;
