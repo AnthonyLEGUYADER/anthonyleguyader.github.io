@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>JavaScript</title>
+    <title>JS/TP JS Avancé 1</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="description" content="">
@@ -36,43 +36,38 @@
 
 
       <!-- Custom styles for this template -->
-      <link href="../css/navbar.css" rel="stylesheet">
-      <link href="../css/product.css" rel="stylesheet">
-      <link rel="stylesheet" href="../css/style.css">
+      <link href="../../css/navbar.css" rel="stylesheet">
+      <link href="../../css/product.css" rel="stylesheet">
+      <link rel="stylesheet" href="../../css/style.css">
 
     </head>
 
     <body id="test">
           <header class="header" style="transform: translateX(0px);">
-            <div class="header__logo">
-              <img src="../img/HeaderLogo.png" alt="logo">
+            <div class="header__logo" style="height: 66px">
+              <img src="../../img/HeaderLogo.png" alt="logo" height=100%>
             </div>
             <div class="header__navwrap">
               <div class="header__navbar">
-                    <a class="header__navitem" href="../index.html">Accueil</a>
-                    <a class="header__navitem" href="html_page.html">HTML</a>
-                    <a class="header__navitem nuxt-link-exact-active nuxt-link-active header__navitem--focus" href="#">JavaScript</a>
-                    <a class="header__navitem" href="php_page.html">PHP</a>
-                    <a class="header__navitem" href="vue_page.html">Vue</a>
-                    <a class="header__navitem" href="whoami_page.html">Qui suis-je ?</a>
-                    <a class="header__navitem" href="les_cop1_page.html">Les cop1</a>
+                    <a class="header__navitem" href="../../index.html">Accueil</a>
+                    <a class="header__navitem" href="../html_page.html">HTML</a>
+                    <a class="header__navitem nuxt-link-exact-active nuxt-link-active header__navitem--focus" href="../js_page.html">JavaScript</a>
+                    <a class="header__navitem" href="../php_page.html">PHP</a>
+                    <a class="header__navitem" href="../vue_page.html">Vue</a>
+                    <a class="header__navitem" href="../whoami_page.html">Qui suis-je ?</a>
+                    <a class="header__navitem" href="../les_cop1_page.html">Les cop1</a>
               </div>
             </div>
             </header>
       </div>
-      <main class="center">
-        <a href="js_page/tp2point1.html">TP 2.1</a>
-        <a href="js_page/tp2point2.html">TP 2.2</a>
-        <a href="js_page/tp2point3.html">TP 2.3</a>
-        <a href="js_page/tp2point4.html">TP 2.4</a>
-        <a href="js_page/tp2point5.html">TP 2.5</a>
-        <a href="js_page/tpAJS1.html">TP JS Avancé 1</a>
-        <a href="js_page/recupDataUsers.html">TP Récupération des entrées utilsiateurs</a>
-      </main>
-          <video poster="../video/HomeVideoImage.JPG" id="bgvid" playsinline autoplay muted loop>
+      <div>
+        <h1>TP JS Avancé 1</h1>   
+      </div>
+      <div id="animatedElem" style="background-color: red; width: 50px; height: 50px; right: 0; position: absolute;"></div>
+          <video poster="../../video/HomeVideoImage.JPG" id="bgvid" playsinline autoplay muted loop>
             <!--- Video needs to be muted, since Chrome 66+ will not autoplay video with sound.
             WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button -->
-            <source src="../video/HomeVideo.mp4" type="video/mp4">
+            <source src="../../video/HomeVideo.mp4" type="video/mp4">
           </video>
     </div>
     <footer class="mastfoot mt-auto">
@@ -86,6 +81,41 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
   </body>
+  <script type="text/javascript">
+
+    function pausecomp(millis) 
+		{
+			var date = new Date();
+			var curDate = null;
+			do { 
+				curDate = new Date(); 
+			} while(curDate-date < millis);
+		}
+
+    function start() {
+      let date1 = new Date();
+      let date2 = new Date();
+      let millis = date2 - date1;
+      console.log(millis);
+      var elem = document.getElementById("animatedElem");
+	    var right = 0;
+	    var timer;
+	    // Move the element 10px on the right every 16ms
+	    timer = setInterval(function() {
+        elem.style.right = ( right += 10 ) + "px";
+        pausecomp(millis);
+		    // clear the timer at 400px to stop the animation
+		    if ( right > 400 ) {
+    			clearInterval( timer );
+		    }
+	    }, 16);
+
+    }
+
+
+    window.addEventListener("load", () => {
+      start();
+    });
+  </script>
 </html>

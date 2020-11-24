@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JS/TP JS Avancé 1</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="Anthony LE GUYADER">
+      <meta name="generator" content="Jekyll v4.1.1">
+      <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+
+      <!-- Bootstrap core CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+      <!-- Favicons -->
+      <!--<link rel="shortcut icon" type="image/png" href="/static/logos/favicon.png"/>-->
+
+
+          <style>
+            .bd-placeholder-img {
+              font-size: 1.125rem;
+              text-anchor: middle;
+              -webkit-user-select: none;
+              -moz-user-select: none;
+              -ms-user-select: none;
+              user-select: none;
+            }
+
+            @media (min-width: 768px) {
+              .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+              }
+            }
+          </style>
+
+
+      <!-- Custom styles for this template -->
+      <link href="../../css/navbar.css" rel="stylesheet">
+      <link href="../../css/product.css" rel="stylesheet">
+      <link rel="stylesheet" href="../../css/style.css">
+
+    </head>
+
+    <body id="test">
+          <header class="header" style="transform: translateX(0px);">
+            <div class="header__logo" style="height: 66px">
+              <img src="../../img/HeaderLogo.png" alt="logo" height=100%>
+            </div>
+            <div class="header__navwrap">
+              <div class="header__navbar">
+                    <a class="header__navitem" href="../../index.html">Accueil</a>
+                    <a class="header__navitem" href="../html_page.html">HTML</a>
+                    <a class="header__navitem nuxt-link-exact-active nuxt-link-active header__navitem--focus" href="../js_page.html">JavaScript</a>
+                    <a class="header__navitem" href="../php_page.html">PHP</a>
+                    <a class="header__navitem" href="../vue_page.html">Vue</a>
+                    <a class="header__navitem" href="../whoami_page.html">Qui suis-je ?</a>
+                    <a class="header__navitem" href="../les_cop1_page.html">Les cop1</a>
+              </div>
+            </div>
+            </header>
+      </div>
+      <div>
+        <h1>Récupération des entrées utilisateurs</h1>   
+      </div>
+      <CANVAS WIDTH="500" HEIGHT="400" ID="animatedElem" tabindex="0" style="border-style: solid; border-width: 2px; width: 500px;">
+        Canvas tag not supported
+      </CANVAS>
+          <video poster="../../video/HomeVideoImage.JPG" id="bgvid" playsinline autoplay muted loop>
+            <!--- Video needs to be muted, since Chrome 66+ will not autoplay video with sound.
+            WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button -->
+            <source src="../../video/HomeVideo.mp4" type="video/mp4">
+          </video>
+    </div>
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+        <p>&copy; 2020 Anthony LE GUYADER, <a href="https://anthonyleguyader.fr">@Anthony</a></p>
+      </div>
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+  <script type="text/javascript">
+
+      class Sprite {
+        constructor(width, height, src) {
+          this.width = width;
+          this.height = height;
+          this.src = src;
+          this.up = 1;
+          this.down = 1;
+          this.left = 1;
+          this.right = 1;
+        }
+      }
+
+        var sprite = new Sprite(128, 128, "../../img/hero_walk_cycle_spritesheet_by_mrnoobtastic-d3defej.png");
+
+        myCanvas = document.getElementById("animatedElem");
+        myCanvas.addEventListener('keydown', updateGame, true);
+        var ctx = myCanvas.getContext('2d');
+        ctx.canvas.width  = window.innerWidth;
+        ctx.canvas.height = window.innerHeight;
+        var img = new Image();
+        img.addEventListener('load', function() {
+          animFrame(recursiveAnim);
+        }, false);
+        img.src = sprite.src;
+
+
+        let framesPerSecond = 10;
+
+        function animate() {
+            setTimeout(function() {
+                requestAnimationFrame(animate);
+
+                // animating/drawing code goes here
+
+
+            }, 1000 / framesPerSecond);
+        }
+
+        var cpt = 0;
+
+        function updateGame() {
+          cpt++;
+          if (cpt > 3) {
+            cpt = 0;
+          }
+        }
+
+        function drawGame() {
+          ctx.drawImage(img, sprite.width*cpt, sprite.height, sprite.width, sprite.height, 0, 0, sprite.width, sprite.height);
+        }
+
+        function clearGame() {
+          ctx.clearRect(0, 0, sprite.width, sprite.height);
+        }
+
+        var mainloop = function() {
+            updateGame();
+            clearGame();
+            drawGame();
+        };
+
+
+        var animFrame = window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame    ||
+                window.oRequestAnimationFrame      ||
+                window.msRequestAnimationFrame     ||
+                null ;
+
+        var recursiveAnim = function() {
+            mainloop();
+            setTimeout(function() {
+              animFrame( recursiveAnim );
+            }, 1000 / 10);
+        };
+  </script>
+</html>
