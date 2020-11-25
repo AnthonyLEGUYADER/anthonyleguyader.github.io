@@ -87,6 +87,13 @@
   <script type="text/javascript">
       var sprite;
 
+      window.addEventListener("keyup", function(event) {
+        if (event.defaultPrevented) {
+          return;
+        }
+        sprite.isMoving = false;
+      });
+
       window.addEventListener("keydown", function (event) {       
 
         if (event.defaultPrevented) {
@@ -97,22 +104,26 @@
           case "ArrowDown":
             sprite.direction = 2;
             sprite.down(10);
+            updateGame();
             break;            
 
           case "ArrowUp":
             console.log(sprite);
             sprite.direction = 3;
             sprite.up(10);
+            updateGame();
             break;
 
           case "ArrowLeft":
             sprite.direction = 0;
             sprite.left(10);
+            updateGame();
             break;
 
           case "ArrowRight":
             sprite.direction = 1;
             sprite.right(10);
+            updateGame();
             break;
 
           case "Enter":
@@ -157,7 +168,7 @@
 
           update() {
             this.cptFrame++;
-            if (this.cptFrame > 15) {
+            if (this.cptFrame > 3) {
               this.cptFrame = 0;
               this.cpt++;
               if (this.cpt > 3) {
@@ -217,7 +228,6 @@
 
         var mainloop = function() {
           clearGame();
-          updateGame();
           drawGame();
         };
 
