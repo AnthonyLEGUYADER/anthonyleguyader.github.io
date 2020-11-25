@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>JS/TP JS Avancé 1</title>
+    <title>Récupération des entrées utilisateurs</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="description" content="">
@@ -85,66 +85,140 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   </body>
   <script type="text/javascript">
+      var sprite;
 
-      class Sprite {
-        constructor(width, height, src) {
-          this.width = width;
-          this.height = height;
-          this.src = src;
-          this.up = 1;
-          this.down = 1;
-          this.left = 1;
-          this.right = 1;
+      window.addEventListener("keydown", function (event) {       
+
+        if (event.defaultPrevented) {
+            return; // Should do nothing if the key event was already consumed.
         }
-      }
 
-        var sprite = new Sprite(128, 128, "../../img/hero_walk_cycle_spritesheet_by_mrnoobtastic-d3defej.png");
+        switch (event.key) {
+          case "ArrowDown":
+            sprite.direction = 2;
+            sprite.down(10);
+            break;            
 
-        myCanvas = document.getElementById("animatedElem");
-        myCanvas.addEventListener('keydown', updateGame, true);
-        var ctx = myCanvas.getContext('2d');
+          case "ArrowUp":
+            console.log(sprite);
+            sprite.direction = 3;
+            sprite.up(10);
+            break;
+
+          case "ArrowLeft":
+            sprite.direction = 0;
+            sprite.left(10);
+            break;
+
+          case "ArrowRight":
+            sprite.direction = 1;
+            sprite.right(10);
+            break;
+
+          case "Enter":
+            // Do something for "enter" or "return" key press.
+            break;
+
+          case "Escape":
+            // Do something for "esc" key press.
+            break;
+
+          default:
+            return; // Quit when this doesn't handle the key event.
+          }
+
+          // Consume the event for suppressing "double action".
+          event.preventDefault();
+        }, true);
+
+        var myCanvas = document.getElementById('animatedElem');
+        ctx = myCanvas.getContext('2d');
         ctx.canvas.width  = window.innerWidth;
         ctx.canvas.height = window.innerHeight;
         var img = new Image();
+        img.src = "../../img/hero_walk_cycle_spritesheet_by_mrnoobtastic-d3defej.png";
+
+        class Sprite {
+          constructor(ctx, img) {
+            this.width = 128;
+            this.height = 128;
+            this.offsetX = 0;
+            this.offsetY = 0;
+            this.img = img;
+            this.ctx = ctx;
+            this.direction = 0; //0: top, 1: right, 2: down, 4: left
+            this.cptFrame = 0;
+            this.cpt = 0
+          }
+
+          clear() {
+            this.ctx.clearRect(this.offsetX-5, this.offsetY-5, 2*this.width, 2*this.height);
+          }
+
+          update() {
+            this.cptFrame++;
+            if (this.cptFrame > 15) {
+              this.cptFrame = 0;
+              this.cpt++;
+              if (this.cpt > 3) {
+                this.cpt = 0;
+              }
+            }
+          }
+
+          draw() {
+            this.ctx.drawImage(img, this.width * this.cpt, this.height * this.direction, this.width, this.height, this.offsetX, this.offsetY, this.width, this.height);
+          }
+
+          down(step) {
+            if (this.offsetY < this.ctx.canvas.height - this.height) {
+              this.offsetY += step;
+            }
+          }
+
+          up(step) {
+            if (this.offsetY > 0) {
+              this.offsetY -= step;
+            }
+          }
+
+          left(step) {
+            if (this.offsetX > 0) {
+              this.offsetX -= step;
+            }
+          }
+
+          right(step) {
+            if (this.offsetX < this.ctx.canvas.width - this.width) {
+              this.offsetX += step;
+            }
+          }
+
+        }
+
+        sprite = new Sprite(ctx, img);
+
+        
         img.addEventListener('load', function() {
           animFrame(recursiveAnim);
         }, false);
-        img.src = sprite.src;
 
-
-        let framesPerSecond = 10;
-
-        function animate() {
-            setTimeout(function() {
-                requestAnimationFrame(animate);
-
-                // animating/drawing code goes here
-
-
-            }, 1000 / framesPerSecond);
+        function clearGame() {
+          sprite.clear();
         }
 
-        var cpt = 0;
-
         function updateGame() {
-          cpt++;
-          if (cpt > 3) {
-            cpt = 0;
-          }
+          sprite.update();
         }
 
         function drawGame() {
-          ctx.drawImage(img, sprite.width*cpt, sprite.height, sprite.width, sprite.height, 0, 0, sprite.width, sprite.height);
-        }
-
-        function clearGame() {
-          ctx.clearRect(0, 0, sprite.width, sprite.height);
+          sprite.draw();
         }
 
         var mainloop = function() {
-            updateGame();
-            clearGame();
-            drawGame();
+          clearGame();
+          updateGame();
+          drawGame();
         };
 
 
@@ -157,9 +231,7 @@
 
         var recursiveAnim = function() {
             mainloop();
-            setTimeout(function() {
-              animFrame( recursiveAnim );
-            }, 1000 / 10);
-        };
+            animFrame(recursiveAnim);
+        }
   </script>
 </html>
