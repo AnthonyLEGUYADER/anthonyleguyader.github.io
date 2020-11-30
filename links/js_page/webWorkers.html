@@ -70,7 +70,9 @@
             <source src="../../video/HomeVideo.mp4" type="video/mp4">
           </video>
     </div>
-    <iframe id="planning" title="Planning" width="800" height="800" src="https://cors-anywhere.herokuapp.com/planning.univ-rennes1.fr/jsp/custom/modules/plannings/9EYlGR3a.shu"></iframe>
+    <div id="content">
+
+    </div>
     <footer class="mastfoot mt-auto">
       <div class="inner">
         <p>&copy; 2020 Anthony LE GUYADER, <a href="https://anthonyleguyader.fr">@Anthony</a></p>
@@ -84,7 +86,32 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   </body>
   <script type="text/javascript">
+    let url = "https://cors-anywhere.herokuapp.com/planning.univ-rennes1.fr/jsp/custom/modules/plannings/9EYlGR3a.shu";
 
-    
+    function loadPlanning(url) {
+      return new Promise((resolve, reject) => {
+        let request = new HTMLTextAreaElement();
+        request.open('GET', url);
+        request.responseType = 'blob';
+
+        request.onload = function() {
+          if (request.status == 200) {
+            resolve(request.response);
+          } else {
+            reject(Error('Chargement échoué' + request.statusText));
+          }
+        };
+
+        request.onerror = function() {
+          reject(Error('Erreur réseau'));
+        };
+
+        request.send();
+      }); 
+    }
+
+    loadPlanning(url).then(function(response) {
+      document.getElementById("content").innerHTML = response;
+    });
   </script>
 </html>
