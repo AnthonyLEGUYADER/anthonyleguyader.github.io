@@ -121,8 +121,8 @@
             break;
 
           case "ArrowRight":
-            sprite.direction = 1;
-            sprite.right(10);
+            sprite.direction = 0;
+            sprite.right(5);
             updateGame();
             break;
 
@@ -168,7 +168,7 @@
 
           update() {
             this.cptFrame++;
-            if (this.cptFrame > 3) {
+            if (this.cptFrame > 10) {
               this.cptFrame = 0;
               this.cpt++;
               if (this.cpt > 3) {
