@@ -91,7 +91,7 @@
       return new Promise((resolve, reject) => {
         let request = new XMLHttpRequest();
         request.open('GET', url);
-        request.responseType = 'blob';
+        request.responseType = 'calendar';
 
         request.onload = function() {
           if (request.status == 200) {
